@@ -93,6 +93,7 @@ var currentQuestion = 0;
 var score = 0;
 var correctAnswers = [];
 function updateQuestion() {
+    document.getElementById('questionNumber').textContent = currentQuestion + 1;
     document.getElementById('question').textContent = questions[currentQuestion].question;
     for (var i = 1; i <= 4; i++) {
         document.getElementById('option' + i).textContent = questions[currentQuestion].options[i - 1];
