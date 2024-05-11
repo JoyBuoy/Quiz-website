@@ -1,3 +1,38 @@
+var timer;
+var timeLimit = 30; // Time limit for each question in seconds
+
+function startTimer() {
+    var timeLeft = timeLimit;
+    document.getElementById('timer').textContent = timeLeft;
+    timer = setInterval(function() {
+        timeLeft--;
+        document.getElementById('timer').textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            // Move to the next question when time is up
+            document.getElementById('next').click();
+        }
+    }, 1000);
+}
+
+document.getElementById('next').addEventListener('click', function() {
+    clearInterval(timer); // Stop the current timer
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        updateQuestion();
+        startTimer(); // Start a new timer
+    } else {
+        document.getElementById('quiz').style.display = 'none';
+        document.getElementById('score').textContent = score;
+        document.getElementById('totalQuestions').textContent = questions.length;
+        document.getElementById('results').style.display = 'block';
+    }
+});
+
+// Start the first timer
+startTimer();
+
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
