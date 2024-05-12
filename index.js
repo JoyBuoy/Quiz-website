@@ -120,13 +120,17 @@ document.getElementById('next').addEventListener('click', function() {
         localStorage.setItem('questions', JSON.stringify(questions));
         console.log(localStorage.getItem('questions'));
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+        console.log(userAnswers);
         localStorage.setItem('correctAnswers', JSON.stringify(correctAnswers));
 
     }
 });
 for (var i = 1; i <= 4; i++) {
+    (function(i) {
     document.getElementById('option' + i).addEventListener('click', function() {
+        
         userAnswers.push(i - 1);
+
         if (this.textContent === questions[currentQuestion].options[questions[currentQuestion].correctAnswer]) {
             score++;
             correctAnswers.push(this.textContent);
@@ -134,6 +138,8 @@ for (var i = 1; i <= 4; i++) {
         // Move to the next question automatically
         document.getElementById('next').click();
     });
+})(i);
+
 }
 updateQuestion();
 
