@@ -127,3 +127,10 @@ document.getElementById('startButton').addEventListener('click', function() {
     document.getElementById('start').style.display = 'none';
     document.getElementById('quiz').style.display = 'block';
 });
+
+document.getElementById('back').addEventListener('click', function () {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        updateQuestion();
+    }
+})
