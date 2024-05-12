@@ -17,6 +17,8 @@ function startTimer() {
 
 document.getElementById('next').addEventListener('click', function() {
     clearInterval(timer); // Stop the current timer
+    var timeLeft = timeLimit;
+    document.getElementById('timer').textContent = timeLeft;
     currentQuestion++;
     if (currentQuestion < questions.length) {
         updateQuestion();
@@ -135,9 +137,11 @@ function updateQuestion() {
     }
 }
 document.getElementById('next').addEventListener('click', function() {
+    clearInterval(timer); // Stop the current timer
     currentQuestion++;
     if (currentQuestion < questions.length) {
         updateQuestion();
+        startTimer(); // Start a new timer
     } else {
         document.getElementById('quiz').style.display = 'none';
         document.getElementById('score').textContent = score;
@@ -157,3 +161,9 @@ for (var i = 1; i <= 4; i++) {
     });
 }
 updateQuestion();
+
+document.getElementById('startButton').addEventListener('click', function() {
+    document.getElementById('start').style.display = 'none';
+    document.getElementById('quiz').style.display = 'block';
+    startTimer(); // Start the first timer
+});
