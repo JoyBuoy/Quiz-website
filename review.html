@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Review</title>
+    <link rel="stylesheet" type="text/css" href="review.css">
+</head>
+<body>
+    <div id="review">
+        <p id="questionNumber"></p>
+        <h1 id="questionHeader"></h1>
+        <div id="options">
+            <button id="option1" disabled></button>
+            <button id="option2" disabled></button>
+            <button id="option3" disabled></button>
+            <button id="option4" disabled></button>
+        </div>
+        <button id="back">Back</button>
+        <button id="next">Next</button>
+    </div>
+    <div id="results" style="display: none;">
+        <h1>Your Score: <span id="score"></span></h1>
+        <p>Total questions: <span id="totalQuestions"></span></p>
+    </div>
+    <script src="review.js"></script>
+</body>
+</html>
