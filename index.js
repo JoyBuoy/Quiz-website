@@ -114,14 +114,13 @@ document.getElementById('next').addEventListener('click', function() {
     } else {
         document.getElementById('quiz').style.display = 'none';
         document.getElementById('score').textContent = score;
-        document.getElementById('correctAnswers').textContent = correctAnswers.join(', ');
         document.getElementById('totalQuestions').textContent = questions.length;
         document.getElementById('results').style.display = 'block';
 
         localStorage.setItem('questions', JSON.stringify(questions));
+        console.log(localStorage.getItem('questions'));
         localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
         localStorage.setItem('correctAnswers', JSON.stringify(correctAnswers));
-            // Redirect to the review page:
 
     }
 });
