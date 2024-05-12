@@ -1,25 +1,3 @@
-var timer;
-var timeLimit = 15; // Time limit for each question in seconds
-
-function startTimer() {
-    var timeLeft = timeLimit;
-    document.getElementById('timer').textContent = timeLeft;
-    timer = setInterval(function() {
-        timeLeft--;
-        document.getElementById('timer').textContent = timeLeft;
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            // Move to the next question when time is up
-            document.getElementById('next').click();
-        }
-    }, 1000);
-}
-
-
-// Start the first timer
-startTimer();
-
-
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -122,11 +100,9 @@ function updateQuestion() {
     }
 }
 document.getElementById('next').addEventListener('click', function() {
-    clearInterval(timer); // Stop the current timer
     currentQuestion++;
     if (currentQuestion < questions.length) {
-        // updateQuestion();
-        // startTimer(); // Start a new timer
+        updateQuestion();
     } else {
         document.getElementById('quiz').style.display = 'none';
         document.getElementById('score').textContent = score;
@@ -143,8 +119,6 @@ for (var i = 1; i <= 4; i++) {
         }
         // Move to the next question automatically
         document.getElementById('next').click();
-        // clearInterval(timer); // Stop the current timer
-        // startTimer(); // Start a new timer
     });
 }
 updateQuestion();
@@ -152,5 +126,4 @@ updateQuestion();
 document.getElementById('startButton').addEventListener('click', function() {
     document.getElementById('start').style.display = 'none';
     document.getElementById('quiz').style.display = 'block';
-    startTimer(); // Start the first timer
 });
