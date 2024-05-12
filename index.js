@@ -1,5 +1,5 @@
 var timer;
-var timeLimit = 30; // Time limit for each question in seconds
+var timeLimit = 15; // Time limit for each question in seconds
 
 function startTimer() {
     var timeLeft = timeLimit;
@@ -15,21 +15,6 @@ function startTimer() {
     }, 1000);
 }
 
-document.getElementById('next').addEventListener('click', function() {
-    clearInterval(timer); // Stop the current timer
-    var timeLeft = timeLimit;
-    document.getElementById('timer').textContent = timeLeft;
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-        updateQuestion();
-        startTimer(); // Start a new timer
-    } else {
-        document.getElementById('quiz').style.display = 'none';
-        document.getElementById('score').textContent = score;
-        document.getElementById('totalQuestions').textContent = questions.length;
-        document.getElementById('results').style.display = 'block';
-    }
-});
 
 // Start the first timer
 startTimer();
@@ -140,8 +125,8 @@ document.getElementById('next').addEventListener('click', function() {
     clearInterval(timer); // Stop the current timer
     currentQuestion++;
     if (currentQuestion < questions.length) {
-        updateQuestion();
-        startTimer(); // Start a new timer
+        // updateQuestion();
+        // startTimer(); // Start a new timer
     } else {
         document.getElementById('quiz').style.display = 'none';
         document.getElementById('score').textContent = score;
@@ -158,6 +143,8 @@ for (var i = 1; i <= 4; i++) {
         }
         // Move to the next question automatically
         document.getElementById('next').click();
+        // clearInterval(timer); // Stop the current timer
+        // startTimer(); // Start a new timer
     });
 }
 updateQuestion();
