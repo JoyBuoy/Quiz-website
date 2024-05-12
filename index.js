@@ -1,5 +1,9 @@
+var userAnswers = [];
+
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length;
+    var temporaryValue;
+    var randomIndex;
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
@@ -101,6 +105,10 @@ function updateQuestion() {
 }
 document.getElementById('next').addEventListener('click', function() {
     currentQuestion++;
+
+
+
+    
     if (currentQuestion < questions.length) {
         updateQuestion();
     } else {
@@ -109,10 +117,17 @@ document.getElementById('next').addEventListener('click', function() {
         document.getElementById('correctAnswers').textContent = correctAnswers.join(', ');
         document.getElementById('totalQuestions').textContent = questions.length;
         document.getElementById('results').style.display = 'block';
+
+        localStorage.setItem('questions', JSON.stringify(questions));
+        localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
+        localStorage.setItem('correctAnswers', JSON.stringify(correctAnswers));
+            // Redirect to the review page:
+
     }
 });
 for (var i = 1; i <= 4; i++) {
     document.getElementById('option' + i).addEventListener('click', function() {
+        userAnswers.push(i - 1);
         if (this.textContent === questions[currentQuestion].options[questions[currentQuestion].correctAnswer]) {
             score++;
             correctAnswers.push(this.textContent);
@@ -134,3 +149,9 @@ document.getElementById('back').addEventListener('click', function () {
         updateQuestion();
     }
 })
+document.getElementById('reviewButton').addEventListener('click', function() {
+    window.location.href = 'review.html';
+});
+
+
+
