@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     updateReview();
 
     function updateReview() {
-        document.getElementById('questionHeader').textContent = 'Question ' + (currentQuestion + 1);
+        document.getElementById('questionHead').textContent = 'Question ' + (currentQuestion + 1);
+        document.getElementById('questionHeader').textContent = questions[currentQuestion].question;
         for (var i = 1; i <= 4; i++) {
             var option = document.getElementById('option' + i);
             option.textContent = questions[currentQuestion].options[i - 1];
